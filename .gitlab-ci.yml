@@ -1,0 +1,21 @@
+stages:
+  - docker-build
+
+docker-build:
+  stage: docker-build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    # 下载阿里巴巴 JDK 11
+    - wget https://github.com/alibaba/dragonwell11/releases/download/dragonwell_11.0.7.2_GA/Alibaba_Dragonwell_11.0.7.2+9_Linux_x64.tar.gz
+    - docker build -t dragonwell11:11.0.7.2-9 .
+  after_script:
+    - docker images
+    - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+    - docker tag dragonwell11:11.0.7.2-9 $DOCKER_USERNAME/dragonwell11:11.0.7.2-9
+    - docker images
+    - docker push $DOCKER_USERNAME/dragonwell11:11.0.7.2-9
+  # https://docs.gitlab.com/ee/ci/yaml/index.html#rules
+  rules:
+    - if: $CI_COMMIT_TAG
