@@ -8,11 +8,11 @@ MAINTAINER 徐晓伟 xuxiaowei@xuxiaowei.com.cn
 WORKDIR /usr/local/dragonwell-11
 
 # 添加镜像
-ADD OpenJDK11U-jdk_x64_linux_dragonwell_dragonwell-11.0.9.4_11.0.9_0.tar.gz .
-RUN mv jdk-11.0.9+0/* .
+ADD Alibaba_Dragonwell_11.0.10.5_linux_x64.tar.gz .
+RUN mv jdk-11.0.10+0/* .
 
 # 设置环境变量
 ENV JAVA_HOME=/usr/local/dragonwell-11
-ENV JAVA_VERSION=11.0.9
-ENV DRAGONWELL_VERSION=11.0.9.4
+ENV JAVA_VERSION=11.0.10
+ENV DRAGONWELL_VERSION=11.0.10.5
 ENV PATH=/usr/local/dragonwell-11/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
