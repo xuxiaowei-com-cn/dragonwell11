@@ -10,7 +10,6 @@ docker-build:
     # 下载阿里巴巴 JDK 11
     - wget https://github.com/alibaba/dragonwell11/releases/download/dragonwell-standard-11.0.17.13_jdk-11.0.17-ga/Alibaba_Dragonwell_Standard_11.0.17.13.8_x64_linux.tar.gz
     - docker build -t dragonwell11:11.0.17.13-Standard .
-  after_script:
     - docker images
     - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
     - docker tag dragonwell11:11.0.17.13-Standard $DOCKER_USERNAME/dragonwell11:11.0.17.13-Standard
